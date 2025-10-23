@@ -17,12 +17,21 @@ def get_file_url(song):
     """Obtiene la URL del archivo, manejando tanto URLs de Cloudinary como rutas locales"""
     if not song.file_path:
         return None
+    
     file_path_str = str(song.file_path)
-    # Si ya es una URL completa de Cloudinary, devolverla tal cual
+    
+    # Si ya es una URL completa (Cloudinary), devolverla tal cual
     if file_path_str.startswith('http'):
         return file_path_str
-    # Si no, construir la URL con MEDIA_URL
-    return song.file_path.url
+    
+    # Si no, intentar construir la URL
+    try:
+        # Si DEFAULT_FILE_STORAGE es Cloudinary, esto generará una URL de Cloudinary
+        return song.file_path.url
+    except Exception as e:
+        # Si falla, intentar construir URL manual con MEDIA_URL
+        print(f"Error getting URL for {song.title}: {str(e)}")
+        return f"{settings.MEDIA_URL}{file_path_str}" if file_path_str else None
 
 
 def index(request):
@@ -157,37 +166,30 @@ def download_song(request):
                     }
                 })
             
-            # Subir a Cloudinary
-            try:
-                cloudinary_response = cloudinary.uploader.upload(
-                    song_path,
-                    resource_type="video",  # MP3 se sube como video en Cloudinary
-                    folder="songs",
-                    public_id=os.path.splitext(os.path.basename(song_path))[0],
-                    overwrite=True
-                )
-                cloudinary_url = cloudinary_response['secure_url']
-                
-                # Eliminar archivo local después de subir
-                try:
-                    os.remove(song_path)
-                except:
-                    pass
-                    
-                # Guardar con la URL de Cloudinary
-                relative_path = cloudinary_url
-                
-            except Exception as e:
-                # Si falla Cloudinary, usar ruta local
-                print(f"Error subiendo a Cloudinary: {str(e)}")
-                relative_path = os.path.join('songs', os.path.basename(song_path))
+            # Subir directamente a Cloudinary usando su API
+            cloudinary_response = cloudinary.uploader.upload(
+                song_path,
+                resource_type="video",  # MP3 se sube como video en Cloudinary
+                folder="songs",
+                public_id=os.path.splitext(os.path.basename(song_path))[0],
+                overwrite=True
+            )
             
+            cloudinary_url = cloudinary_response['secure_url']
+            
+            # Crear la canción con la URL de Cloudinary
             song = Song.objects.create(
                 title=song_title,
                 youtube_url=url,
-                file_path=relative_path,
+                file_path=cloudinary_url,
                 duration=duration
             )
+            
+            # Eliminar archivo local temporal
+            try:
+                os.remove(song_path)
+            except:
+                pass
             
             return JsonResponse({
                 'message': 'Canción descargada exitosamente',
