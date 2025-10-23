@@ -14,7 +14,9 @@ from django.conf import settings
 
 def index(request):
     """Vista principal del reproductor"""
-    return render(request, 'player/index.html')
+    return render(request, 'player/index.html', {
+        'enable_download': settings.ENABLE_YOUTUBE_DOWNLOAD
+    })
 
 
 def get_or_create_playback_state(request):
@@ -66,6 +68,12 @@ def song_detail(request, song_id):
 @require_http_methods(["POST"])
 def download_song(request):
     """Descarga una canción de YouTube"""
+    # Verificar si las descargas están habilitadas
+    if not settings.ENABLE_YOUTUBE_DOWNLOAD:
+        return JsonResponse({
+            'error': 'Las descargas de YouTube solo están disponibles en la versión local. Esta es una versión de demostración con canciones pre-cargadas.'
+        }, status=403)
+    
     try:
         data = json.loads(request.body)
         url = data.get('url', '').strip()

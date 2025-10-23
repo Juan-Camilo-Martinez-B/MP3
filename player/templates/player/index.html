@@ -21,6 +21,7 @@
         </div>
 
             <!-- Download Section -->
+            {% if enable_download %}
             <div class="download-section">
                 <h3>Descargar de YouTube</h3>
                 <div class="input-group">
@@ -32,6 +33,15 @@
                 </div>
                 <div id="download-status" class="status-message"></div>
             </div>
+            {% else %}
+            <div class="download-section">
+                <div class="info-box">
+                    <i class="fas fa-info-circle"></i>
+                    <p><strong>Modo Demostración</strong></p>
+                    <p>Las descargas están disponibles solo en la versión local. Esta versión tiene canciones pre-cargadas para demostración.</p>
+                </div>
+            </div>
+            {% endif %}
 
             <!-- Playlists Section -->
             <div class="playlists-section">
