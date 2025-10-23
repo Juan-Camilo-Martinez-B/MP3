@@ -10,6 +10,19 @@ from yt_dlp import YoutubeDL
 import re
 from pathlib import Path
 from django.conf import settings
+import cloudinary.uploader
+
+
+def get_file_url(song):
+    """Obtiene la URL del archivo, manejando tanto URLs de Cloudinary como rutas locales"""
+    if not song.file_path:
+        return None
+    file_path_str = str(song.file_path)
+    # Si ya es una URL completa de Cloudinary, devolverla tal cual
+    if file_path_str.startswith('http'):
+        return file_path_str
+    # Si no, construir la URL con MEDIA_URL
+    return song.file_path.url
 
 
 def index(request):
@@ -45,7 +58,7 @@ def songs_list(request):
         'duration_formatted': song.duration_formatted,
         'play_count': song.play_count,
         'added_date': song.added_date.strftime('%Y-%m-%d %H:%M'),
-        'file_url': song.file_path.url if song.file_path else None,
+        'file_url': get_file_url(song),
     } for song in songs]
     
     return JsonResponse({'songs': songs_data})
@@ -60,7 +73,7 @@ def song_detail(request, song_id):
         'duration': song.duration,
         'duration_formatted': song.duration_formatted,
         'play_count': song.play_count,
-        'file_url': song.file_path.url if song.file_path else None,
+        'file_url': get_file_url(song),
     })
 
 
@@ -126,12 +139,14 @@ def download_song(request):
             if not os.path.exists(song_path):
                 return JsonResponse({'error': 'Error al descargar el archivo'}, status=500)
             
-            # Crear entrada en la base de datos
-            relative_path = os.path.join('songs', os.path.basename(song_path))
-            
             # Verificar si ya existe
             existing_song = Song.objects.filter(title=song_title).first()
             if existing_song:
+                # Limpiar archivo local si ya existe en BD
+                try:
+                    os.remove(song_path)
+                except:
+                    pass
                 return JsonResponse({
                     'message': 'Canción ya existe en la biblioteca',
                     'song': {
@@ -141,6 +156,31 @@ def download_song(request):
                         'duration_formatted': existing_song.duration_formatted,
                     }
                 })
+            
+            # Subir a Cloudinary
+            try:
+                cloudinary_response = cloudinary.uploader.upload(
+                    song_path,
+                    resource_type="video",  # MP3 se sube como video en Cloudinary
+                    folder="songs",
+                    public_id=os.path.splitext(os.path.basename(song_path))[0],
+                    overwrite=True
+                )
+                cloudinary_url = cloudinary_response['secure_url']
+                
+                # Eliminar archivo local después de subir
+                try:
+                    os.remove(song_path)
+                except:
+                    pass
+                    
+                # Guardar con la URL de Cloudinary
+                relative_path = cloudinary_url
+                
+            except Exception as e:
+                # Si falla Cloudinary, usar ruta local
+                print(f"Error subiendo a Cloudinary: {str(e)}")
+                relative_path = os.path.join('songs', os.path.basename(song_path))
             
             song = Song.objects.create(
                 title=song_title,
@@ -156,7 +196,7 @@ def download_song(request):
                     'title': song.title,
                     'duration': song.duration,
                     'duration_formatted': song.duration_formatted,
-                    'file_url': song.file_path.url,
+                    'file_url': get_file_url(song),
                 }
             })
     
@@ -201,7 +241,7 @@ def playlist_detail(request, playlist_id):
         'duration': item.song.duration,
         'duration_formatted': item.song.duration_formatted,
         'position': item.position,
-        'file_url': item.song.file_path.url if item.song.file_path else None,
+        'file_url': get_file_url(item.song),
     } for item in items]
     
     return JsonResponse({
@@ -322,7 +362,7 @@ def playlist_shuffle(request, playlist_id):
                 'id': first_song.id,
                 'title': first_song.title,
                 'duration': first_song.duration,
-                'file_url': first_song.file_path.url if first_song.file_path else None
+                'file_url': get_file_url(first_song)
             }
         
         return JsonResponse(response_data)
@@ -425,7 +465,7 @@ def playback_state(request):
             'id': playback.current_song.id,
             'title': playback.current_song.title,
             'duration': playback.current_song.duration,
-            'file_url': playback.current_song.file_path.url,
+            'file_url': get_file_url(playback.current_song),
         } if playback.current_song else None,
         'current_playlist_id': playback.current_playlist.id if playback.current_playlist else None,
         'current_position': playback.current_position,

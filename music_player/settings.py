@@ -147,15 +147,25 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # Cloudinary Configuration
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+cloudinary.config(
+    cloud_name = config('CLOUDINARY_CLOUD_NAME', default=''),
+    api_key = config('CLOUDINARY_API_KEY', default=''),
+    api_secret = config('CLOUDINARY_API_SECRET', default=''),
+    secure = True
+)
+
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME', default=''),
     'API_KEY': config('CLOUDINARY_API_KEY', default=''),
     'API_SECRET': config('CLOUDINARY_API_SECRET', default=''),
 }
 
-# Solo usar Cloudinary en producción (cuando hay DATABASE_URL = Render)
-if os.environ.get('DATABASE_URL'):
-    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# Usar Cloudinary siempre (tanto en local como en producción)
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Control de descargas: Solo permitir en desarrollo local
 ENABLE_YOUTUBE_DOWNLOAD = not os.environ.get('DATABASE_URL')  # True en local, False en Render
