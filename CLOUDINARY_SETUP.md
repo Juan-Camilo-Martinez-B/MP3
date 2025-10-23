@@ -91,15 +91,15 @@ Deberías ver URLs que empiezan con `https://res.cloudinary.com/...`
 
 ## Desplegar en Render
 
-### 1. Exportar Datos de Canciones
+### 1. Exportar Datos de Canciones (Ya hecho)
 
-Antes de desplegar, exporta las canciones a JSON:
+El archivo `songs_data.json` ya está incluido en el repositorio con todas las canciones y sus URLs de Cloudinary.
+
+Si necesitas regenerarlo:
 
 ```bash
 py export_songs_data.py
 ```
-
-Esto genera `songs_data.json` con todas las canciones y sus URLs de Cloudinary.
 
 ### 2. Configurar Variables de Entorno en Render
 
@@ -115,16 +115,29 @@ ALLOWED_HOSTS=tu-app.onrender.com
 DEBUG=False
 ```
 
-### 3. Desplegar y Cargar Datos
+### 3. Desplegar - ¡Automático!
 
-Después del despliegue, desde la terminal de Render:
+El archivo `build.sh` se encarga de todo automáticamente:
+
+1. Instala dependencias
+2. Recolecta archivos estáticos
+3. Ejecuta migraciones
+4. **Carga automáticamente las canciones** desde `songs_data.json` (solo la primera vez)
+
+No necesitas hacer nada más. Las 25 canciones se cargarán automáticamente en el primer despliegue.
+
+### Comando Personalizado
+
+Si en el futuro necesitas recargar datos manualmente (con acceso a terminal):
 
 ```bash
-python manage.py migrate
-python manage.py loaddata songs_data.json
+python manage.py load_initial_data
 ```
 
-O crea un script de inicialización en Render que haga esto automáticamente.
+Este comando es inteligente:
+- Si ya hay canciones, no hace nada
+- Si no hay canciones, carga los datos desde `songs_data.json`
+- Es seguro ejecutarlo múltiples veces
 
 ## Notas Importantes
 
