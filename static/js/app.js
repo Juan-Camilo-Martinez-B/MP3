@@ -46,11 +46,19 @@ function initializeApp() {
 }
 
 function setupEventListeners() {
-    // Download
-    document.getElementById('download-btn').addEventListener('click', downloadSong);
-    document.getElementById('youtube-url').addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') downloadSong();
-    });
+    // Download - Solo si los elementos existen (no en modo demostración)
+    const downloadBtn = document.getElementById('download-btn');
+    const youtubeUrl = document.getElementById('youtube-url');
+    
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', downloadSong);
+    }
+    
+    if (youtubeUrl) {
+        youtubeUrl.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') downloadSong();
+        });
+    }
     
     // Tabs
     document.querySelectorAll('.tab-btn').forEach(btn => {
