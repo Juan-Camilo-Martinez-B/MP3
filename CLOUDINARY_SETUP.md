@@ -89,9 +89,47 @@ Deberías ver URLs que empiezan con `https://res.cloudinary.com/...`
 2. Verifica que tengas espacio disponible en tu cuenta de Cloudinary
 3. Revisa los logs para ver el error específico
 
+## Desplegar en Render
+
+### 1. Exportar Datos de Canciones
+
+Antes de desplegar, exporta las canciones a JSON:
+
+```bash
+py export_songs_data.py
+```
+
+Esto genera `songs_data.json` con todas las canciones y sus URLs de Cloudinary.
+
+### 2. Configurar Variables de Entorno en Render
+
+En el dashboard de Render, configura:
+
+```
+CLOUDINARY_CLOUD_NAME=tu_cloud_name
+CLOUDINARY_API_KEY=tu_api_key
+CLOUDINARY_API_SECRET=tu_api_secret
+DATABASE_URL=(se configura automáticamente)
+SECRET_KEY=tu_secret_key_segura
+ALLOWED_HOSTS=tu-app.onrender.com
+DEBUG=False
+```
+
+### 3. Desplegar y Cargar Datos
+
+Después del despliegue, desde la terminal de Render:
+
+```bash
+python manage.py migrate
+python manage.py loaddata songs_data.json
+```
+
+O crea un script de inicialización en Render que haga esto automáticamente.
+
 ## Notas Importantes
 
 - **Límite del plan gratuito**: 25 GB de almacenamiento y 25 GB de transferencia mensual
 - **Backup**: Las canciones están en Cloudinary, no olvides mantener una copia local si son importantes
 - **URLs permanentes**: Las URLs de Cloudinary son permanentes mientras no elimines los archivos
+- **Base de datos**: El archivo `songs_data.json` contiene los metadatos, las canciones están en Cloudinary
 

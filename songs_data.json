@@ -1,0 +1,302 @@
+[
+{
+  "model": "player.song",
+  "pk": 25,
+  "fields": {
+    "title": "Blinding Lights",
+    "youtube_url": "https://youtu.be/J7p4bzqLvCw?list=RDJ7p4bzqLvCw",
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202678/songs/Blinding%20Lights.mp3",
+    "duration": 202.0,
+    "added_date": "2025-10-23T06:57:57.039Z",
+    "play_count": 0
+  }
+},
+{
+  "model": "player.song",
+  "pk": 24,
+  "fields": {
+    "title": "Big Time Rush - Til I Forget About You (Official Video)",
+    "youtube_url": "https://youtu.be/86484QLtudg?list=RD86484QLtudg",
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202514/songs/Big_Time_Rush_-_Til_I_Forget_About_You_Official_Video_ZiqK6eo_KJzRGB6.mp3",
+    "duration": 279.0,
+    "added_date": "2025-10-23T06:52:08.532Z",
+    "play_count": 0
+  }
+},
+{
+  "model": "player.song",
+  "pk": 23,
+  "fields": {
+    "title": "Peter Punk: Somos Invencibles - Rock Bones",
+    "youtube_url": "https://youtu.be/2OGDTLliJCc?list=RDZIoDzxy09aY",
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761200425/songs/Peter%20Punk%EF%BC%9A%20Somos%20Invencibles%20-%20Rock%20Bones.mp3",
+    "duration": 132.0,
+    "added_date": "2025-10-23T06:20:24.608Z",
+    "play_count": 1
+  }
+},
+{
+  "model": "player.song",
+  "pk": 22,
+  "fields": {
+    "title": "Rock Bones: \"Paso el tiempo\"",
+    "youtube_url": "https://youtu.be/ZIoDzxy09aY?list=RDZIoDzxy09aY",
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202517/songs/Rock_Bones_Paso_el_tiempo_Pdgkd39.mp3",
+    "duration": 207.0,
+    "added_date": "2025-10-23T06:14:23.491Z",
+    "play_count": 0
+  }
+},
+{
+  "model": "player.song",
+  "pk": 21,
+  "fields": {
+    "title": "lo que hay x aquí",
+    "youtube_url": "https://youtu.be/pp3i8tY3DG4?list=RDpp3i8tY3DG4",
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202519/songs/lo_que_hay_x_aqu%C3%AD_afhSbSB.mp3",
+    "duration": 155.0,
+    "added_date": "2025-10-23T06:11:02.574Z",
+    "play_count": 1
+  }
+},
+{
+  "model": "player.song",
+  "pk": 20,
+  "fields": {
+    "title": "Luis Fonsi - Despacito ft. Daddy Yankee",
+    "youtube_url": "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202522/songs/Luis_Fonsi_-_Despacito_ft_am3hE1i._Daddy_Yankee.mp3",
+    "duration": 282.0,
+    "added_date": "2025-10-23T06:04:43.262Z",
+    "play_count": 1
+  }
+},
+{
+  "model": "player.song",
+  "pk": 19,
+  "fields": {
+    "title": "bbno$ - meant to be",
+    "youtube_url": "https://youtu.be/KzA-Rz_gPgY?list=RDKzA-Rz_gPgY",
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202524/songs/bbno_-_meant_to_be_SmzAnMg.mp3",
+    "duration": 171.0,
+    "added_date": "2025-10-23T05:58:31.369Z",
+    "play_count": 1
+  }
+},
+{
+  "model": "player.song",
+  "pk": 18,
+  "fields": {
+    "title": "Radiohead - Creep",
+    "youtube_url": "https://youtu.be/XFkzRNyygfk?list=RDXFkzRNyygfk",
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202527/songs/Radiohead_-_Creep_HAwAC1I.mp3",
+    "duration": 237.0,
+    "added_date": "2025-10-23T05:00:50.981Z",
+    "play_count": 2
+  }
+},
+{
+  "model": "player.song",
+  "pk": 17,
+  "fields": {
+    "title": "W Sound 05 ＂LA PLENA＂ - Beéle, Westcol, Ovy On The Drums",
+    "youtube_url": null,
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202529/songs/W_Sound_05_LA_PLENA_-_Be%C3%A9le_Westcol_Ovy_On_The_Drums.mp3",
+    "duration": 150.048,
+    "added_date": "2025-10-23T04:06:16.929Z",
+    "play_count": 9
+  }
+},
+{
+  "model": "player.song",
+  "pk": 16,
+  "fields": {
+    "title": "W Sound 01 ＂Soltera＂ - Blessd, Westcol, Ovy On The Drums (Official Video)",
+    "youtube_url": null,
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202531/songs/W_Sound_01_Soltera_-_Blessd_Westcol_Ovy_On_The_Drums_Official_Video.mp3",
+    "duration": 142.1061224489796,
+    "added_date": "2025-10-23T04:06:16.918Z",
+    "play_count": 5
+  }
+},
+{
+  "model": "player.song",
+  "pk": 15,
+  "fields": {
+    "title": "Vance Joy - Riptide (Lyrics)",
+    "youtube_url": null,
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202534/songs/Vance_Joy_-_Riptide_Lyrics.mp3",
+    "duration": 198.144,
+    "added_date": "2025-10-23T04:06:16.906Z",
+    "play_count": 1
+  }
+},
+{
+  "model": "player.song",
+  "pk": 14,
+  "fields": {
+    "title": "The Kid LAROI, Justin Bieber - Stay (Lyrics)",
+    "youtube_url": null,
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202535/songs/The_Kid_LAROI_Justin_Bieber_-_Stay_Lyrics.mp3",
+    "duration": 139.75510204081633,
+    "added_date": "2025-10-23T04:06:16.894Z",
+    "play_count": 5
+  }
+},
+{
+  "model": "player.song",
+  "pk": 13,
+  "fields": {
+    "title": "Silvestre Dangond, Juancho De La Espriella - Volvamos a Ser Novios (Audio)",
+    "youtube_url": null,
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202538/songs/Silvestre_Dangond_Juancho_De_La_Espriella_-_Volvamos_a_Ser_Novios_Audio.mp3",
+    "duration": 238.00163265306122,
+    "added_date": "2025-10-23T04:06:16.883Z",
+    "play_count": 0
+  }
+},
+{
+  "model": "player.song",
+  "pk": 12,
+  "fields": {
+    "title": "Shawn Mendes - Treat You Better",
+    "youtube_url": null,
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202541/songs/Shawn_Mendes_-_Treat_You_Better.mp3",
+    "duration": 256.344,
+    "added_date": "2025-10-23T04:06:16.870Z",
+    "play_count": 0
+  }
+},
+{
+  "model": "player.song",
+  "pk": 11,
+  "fields": {
+    "title": "Powfu - death bed (coffee for your head) (Official Video) ft. beabadoobee",
+    "youtube_url": null,
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202543/songs/Powfu_-_death_bed_coffee_for_your_head_Official_Video_ft._beabadoobee.mp3",
+    "duration": 173.808,
+    "added_date": "2025-10-23T04:06:16.857Z",
+    "play_count": 0
+  }
+},
+{
+  "model": "player.song",
+  "pk": 10,
+  "fields": {
+    "title": "Paulo Londra - Tal Vez (Official Video)",
+    "youtube_url": null,
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202546/songs/Paulo_Londra_-_Tal_Vez_Official_Video.mp3",
+    "duration": 271.9085714285714,
+    "added_date": "2025-10-23T04:06:16.845Z",
+    "play_count": 4
+  }
+},
+{
+  "model": "player.song",
+  "pk": 9,
+  "fields": {
+    "title": "Paulo Londra - PVSL (Official Video)",
+    "youtube_url": null,
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202549/songs/Paulo_Londra_-_PVSL_Official_Video.mp3",
+    "duration": 204.12,
+    "added_date": "2025-10-23T04:06:16.833Z",
+    "play_count": 0
+  }
+},
+{
+  "model": "player.song",
+  "pk": 8,
+  "fields": {
+    "title": "Paulo Londra - Nublado (Official Video)",
+    "youtube_url": null,
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202551/songs/Paulo_Londra_-_Nublado_Official_Video.mp3",
+    "duration": 177.672,
+    "added_date": "2025-10-23T04:06:16.821Z",
+    "play_count": 0
+  }
+},
+{
+  "model": "player.song",
+  "pk": 7,
+  "fields": {
+    "title": "LIT killah, TULI - MALA SUERTE (Official Video)",
+    "youtube_url": null,
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202552/songs/LIT_killah_TULI_-_MALA_SUERTE_Official_Video.mp3",
+    "duration": 158.98122448979592,
+    "added_date": "2025-10-23T04:06:16.805Z",
+    "play_count": 0
+  }
+},
+{
+  "model": "player.song",
+  "pk": 6,
+  "fields": {
+    "title": "KAROL G, Shakira - TQG (Official Video)",
+    "youtube_url": null,
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202555/songs/KAROL_G_Shakira_-_TQG_Official_Video.mp3",
+    "duration": 216.52897959183673,
+    "added_date": "2025-10-23T04:06:16.793Z",
+    "play_count": 0
+  }
+},
+{
+  "model": "player.song",
+  "pk": 5,
+  "fields": {
+    "title": "Imagine Dragons - Sharks (Official Music Video)",
+    "youtube_url": null,
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202557/songs/Imagine_Dragons_-_Sharks_Official_Music_Video.mp3",
+    "duration": 216.552,
+    "added_date": "2025-10-23T04:06:16.781Z",
+    "play_count": 2
+  }
+},
+{
+  "model": "player.song",
+  "pk": 4,
+  "fields": {
+    "title": "DUKI - Hello Cotto (Oficial)",
+    "youtube_url": null,
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202560/songs/DUKI_-_Hello_Cotto_Oficial.mp3",
+    "duration": 222.048,
+    "added_date": "2025-10-23T04:06:16.768Z",
+    "play_count": 0
+  }
+},
+{
+  "model": "player.song",
+  "pk": 3,
+  "fields": {
+    "title": "Dani Ribba, LIT killah - EN DONDE (Official Video)",
+    "youtube_url": null,
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202562/songs/Dani_Ribba_LIT_killah_-_EN_DONDE_Official_Video.mp3",
+    "duration": 142.81142857142856,
+    "added_date": "2025-10-23T04:06:16.755Z",
+    "play_count": 0
+  }
+},
+{
+  "model": "player.song",
+  "pk": 2,
+  "fields": {
+    "title": "Becky G, Paulo Londra - Cuando Te Besé (Official Video)",
+    "youtube_url": null,
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202564/songs/Becky_G_Paulo_Londra_-_Cuando_Te_Bes%C3%A9_Official_Video.mp3",
+    "duration": 279.96,
+    "added_date": "2025-10-23T04:06:16.743Z",
+    "play_count": 0
+  }
+},
+{
+  "model": "player.song",
+  "pk": 1,
+  "fields": {
+    "title": "BAD BUNNY x JHAY CORTEZ - DÁKITI (Video Oficial)",
+    "youtube_url": null,
+    "file_path": "https://res.cloudinary.com/dv4aonf5w/video/upload/v1761202567/songs/BAD_BUNNY_x_JHAY_CORTEZ_-_D%C3%81KITI_Video_Oficial.mp3",
+    "duration": 213.96897959183673,
+    "added_date": "2025-10-23T04:06:16.729Z",
+    "play_count": 0
+  }
+}
+]
