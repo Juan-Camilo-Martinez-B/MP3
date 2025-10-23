@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+/staticfiles
+/static_root
+
+# Media files - NO ignorar media/ porque contiene las canciones
+# Si quieres ignorar las canciones en git, descomenta:
+# /media/songs/*.mp3
+
+# Environment
+.env
+.venv
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Archivos de backup
+*.bak
+*~
+
+# Carpeta de canciones antigua (puede eliminarse después de migrar)
+# /songs/
+
