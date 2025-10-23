@@ -8,7 +8,7 @@ class Song(models.Model):
     """Modelo para las canciones"""
     title = models.CharField(max_length=255, verbose_name="Título")
     youtube_url = models.URLField(blank=True, null=True, verbose_name="URL de YouTube")
-    file_path = models.FileField(upload_to='songs/', verbose_name="Archivo MP3")
+    file_path = models.CharField(max_length=500, verbose_name="Archivo MP3")  # Cambiado a CharField para soportar URLs largas de Cloudinary
     duration = models.FloatField(default=0, verbose_name="Duración (segundos)")
     added_date = models.DateTimeField(default=timezone.now, verbose_name="Fecha de agregado")
     play_count = models.IntegerField(default=0, verbose_name="Reproducciones")

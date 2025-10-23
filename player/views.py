@@ -20,18 +20,12 @@ def get_file_url(song):
     
     file_path_str = str(song.file_path)
     
-    # Si ya es una URL completa (Cloudinary), devolverla tal cual
+    # Si ya es una URL completa (Cloudinary o cualquier URL), devolverla tal cual
     if file_path_str.startswith('http'):
         return file_path_str
     
-    # Si no, intentar construir la URL
-    try:
-        # Si DEFAULT_FILE_STORAGE es Cloudinary, esto generará una URL de Cloudinary
-        return song.file_path.url
-    except Exception as e:
-        # Si falla, intentar construir URL manual con MEDIA_URL
-        print(f"Error getting URL for {song.title}: {str(e)}")
-        return f"{settings.MEDIA_URL}{file_path_str}" if file_path_str else None
+    # Si no, es una ruta local, construir URL con MEDIA_URL
+    return f"{settings.MEDIA_URL}{file_path_str}" if file_path_str else None
 
 
 def index(request):
