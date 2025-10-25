@@ -32,6 +32,7 @@ const csrftoken = getCookie('csrftoken');
 document.addEventListener('DOMContentLoaded', () => {
     initializeApp();
     setupEventListeners();
+    setupMobileMenu();
     loadInitialData();
 });
 
@@ -718,6 +719,80 @@ function playSongFromLibrary(songId) {
         });
     }
 }
+
+// ============ MOBILE MENU ============
+
+function setupMobileMenu() {
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.getElementById('mobile-overlay');
+    
+    if (!menuToggle || !sidebar || !overlay) return;
+    
+    // Toggle menu
+    menuToggle.addEventListener('click', () => {
+        const isOpen = sidebar.classList.contains('mobile-open');
+        
+        if (isOpen) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+        }
+    });
+    
+    // Click en overlay cierra el menú
+    overlay.addEventListener('click', closeMobileMenu);
+    
+    // Click en playlist cierra el menú en móvil
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('.playlist-item')) {
+            // Esperar un momento para que la playlist cargue
+            setTimeout(closeMobileMenu, 300);
+        }
+    });
+    
+    // Cerrar menú al cambiar de tab en móvil
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                closeMobileMenu();
+            }
+        });
+    });
+}
+
+function openMobileMenu() {
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.getElementById('mobile-overlay');
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    
+    sidebar.classList.add('mobile-open');
+    overlay.classList.add('active');
+    menuToggle.querySelector('i').className = 'fas fa-times';
+    
+    // Prevenir scroll del body
+    document.body.style.overflow = 'hidden';
+}
+
+function closeMobileMenu() {
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.getElementById('mobile-overlay');
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    
+    sidebar.classList.remove('mobile-open');
+    overlay.classList.remove('active');
+    menuToggle.querySelector('i').className = 'fas fa-bars';
+    
+    // Restaurar scroll del body
+    document.body.style.overflow = '';
+}
+
+// Cerrar menú al redimensionar ventana
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        closeMobileMenu();
+    }
+});
 
 // Hacer funciones globales para los onclick en HTML
 window.playSong = playSong;
